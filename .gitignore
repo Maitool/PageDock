@@ -1,0 +1,31 @@
+# 运行期数据与用户内容（含便签正文、WebView 缓存、应用清单）
+data/
+**/data/
+
+# 构建输出与发布包
+bin/
+**/bin/
+PageDock/
+staging/
+*.zip
+
+# 私有工作区、内部文档与临时调试脚本
+.qoder/
+.zwork/
+tools/
+*.log
+*.tmp
+*.bak
+
+# Windows / 编辑器 / OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vs/
+.vscode/
+*.user
+*.suo
+
+# NuGet / 编译缓存
+obj/
+packages/

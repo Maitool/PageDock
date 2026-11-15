@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>页坞 PageDock</title>
+<script>
+/* 首帧主题：宿主（C#）已把「设置 + 系统主题」算好，在 document 创建时就把结果注入
+   window.__pdTheme；这里直接用，不再去问 prefers-color-scheme。
+   WebView2 的色彩偏好是异步生效且会被上次运行记住的，首帧问到的可能是旧值，
+   浅色系统上就会先闪一帧深色。无宿主（直接用浏览器打开）时才回落到媒体查询。*/
+(function () {
+  try {
+    var t = window.__pdTheme ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) { }
+})();
+</script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<main id="main">
+  <div id="chips" class="chips hidden"></div>
+  <section id="grid" class="grid"></section>
+
+  <section id="empty" class="empty hidden">
+    <div class="empty-inner">
+      <svg width="88" height="88" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="#2A2E36" stroke-width="1.2"/>
+        <rect x="6.4" y="13.4" width="5" height="4.4" rx="1.4" stroke="#3A3F49" stroke-width="1.2" stroke-dasharray="2 2"/>
+        <rect x="12.6" y="13.4" width="5" height="4.4" rx="1.4" stroke="#3A3F49" stroke-width="1.2" stroke-dasharray="2 2"/>
+        <rect x="9.5" y="6.4" width="5" height="4.4" rx="1.4" fill="#2DD4BF" opacity=".85"/>
+      </svg>
+      <h2>页坞还是空的</h2>
+      <p>添加一个网址、HTML 文件或文件夹，<br>把它们停进同一个码头。</p>
+      <button class="btn primary" id="empty-add">＋ 添加第一个应用</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span id="stat-left" class="dim"></span>
+  <span class="right">
+    <span id="mockchip" class="chip hidden">预览模式（无宿主）</span>
+    <span class="dim" id="ver">v0.9.27</span>
+  </span>
+</footer>
+
+<div id="cardtip" class="cardtip"></div>
+<div id="modal-root"></div>
+<div id="toasts"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
