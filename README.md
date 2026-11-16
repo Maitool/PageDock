@@ -5,6 +5,12 @@
 
 **当前版本：v0.9.28** · License: MIT
 
+## 界面预览
+
+| 工作台 | 便签 | 时钟 |
+|:---:|:---:|:---:|
+| ![](docs/screenshots/主页.png) | ![](docs/screenshots/便签.png) | ![](docs/screenshots/时钟.png) |
+
 ## 名称释义
 
 **页坞 · PageDock**：「页」即网页，「坞」即船坞——网页应用的停泊处，点一下即起航。
